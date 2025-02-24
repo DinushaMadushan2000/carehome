@@ -1,14 +1,14 @@
 <?php
-include_once './header.php'; 
-include_once '../controllers/index.php';
+include_once './header.php';
+
 
 $form_config = [
     'heading' => 'Event List',
     'title' => 'list',
     'new' => 'event',
-    'table' => ['th' => ['Application_Name', 'Description','Action']],
-    'tbl' => 'courses',
-    'redirect' => 'application_list',
+    'table' => ['th' => ['Application_Name', 'Description', 'Action']],
+    'db_table' => 'events',
+    'redirect' => 'blog_list',
 
 ];
 
@@ -20,9 +20,9 @@ $list = $event->get_all()['error'] === null ? $event->get_all()['data'] : null;
 
 <div class="content-wrapper">
     <?php
-        $heading = $form_config['heading'];
-        $page_title = $form_config['title'];  
-        include_once './page_header.php'; ?>
+    $heading = $form_config['heading'];
+    $page_title = $form_config['title'];
+    include_once './page_header.php'; ?>
 
     <section class="content">
         <div class="row">
@@ -70,17 +70,18 @@ $list = $event->get_all()['error'] === null ? $event->get_all()['data'] : null;
 
                                             <td>
                                                 <?php if ($row['status'] == '1') { ?>
-                                                    <button type="button" class="btn btn-block btn-outline-danger btn-flat" onclick="delete_record('<?= $row['id']; ?>', '<?= $form_config['tbl']; ?>', 'id', '<?= $form_config['redirect']; ?>');">
+                                                    <button type="button" class="btn btn-block btn-outline-danger btn-flat" onclick="delete_record('<?= $row['id']; ?>', '<?= $form_config['db_table']; ?>', 'id', '<?= $form_config['redirect']; ?>');">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 <?php } else { ?>
-                                                    <button type="button" class="btn btn-block btn-outline-success btn-flat" onclick="activate_record('<?= $row['id']; ?>', '<?= $form_config['tbl']; ?>', 'id', '<?= $form_config['redirect']; ?>');">
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-flat" onclick="activate_record('<?= $row['id']; ?>', '<?= $form_config['db_table']; ?>', 'id', '<?= $form_config['redirect']; ?>');">
                                                         <i class="fa fa-check"></i>
                                                     </button>
                                                 <?php } ?>
                                             </td>
                                         </tr>
-                                <?php } } ?>
+                                <?php }
+                                } ?>
                             </tbody>
                         </table>
                     </div>
@@ -92,4 +93,5 @@ $list = $event->get_all()['error'] === null ? $event->get_all()['data'] : null;
 
 <?php include_once './footer.php'; ?>
 </body>
+
 </html>

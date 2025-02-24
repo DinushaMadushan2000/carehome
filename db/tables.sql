@@ -609,3 +609,22 @@ CREATE TABLE gallery (
     status int DEFAULT 0,
     PRIMARY KEY (id) USING BTREE
 );
+
+
+DROP TABLE IF EXISTS events;
+
+CREATE TABLE events (
+    id int NOT NULL AUTO_INCREMENT,
+    f1 varchar(250) DEFAULT NULL,
+    f2 varchar(255) DEFAULT NULL,
+    f3 varchar(255) DEFAULT NULL,
+    f4 varchar(255) DEFAULT NULL,
+    f5 longtext DEFAULT NULL,
+    img1 varchar(255) DEFAULT NULL, -- Column for the first image
+    created_by int NULL DEFAULT NULL,
+    created_date datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+    updated_by int NULL DEFAULT NULL,
+    updated_date datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
+    status int NULL DEFAULT 0,
+    PRIMARY KEY (id) USING BTREE
+);

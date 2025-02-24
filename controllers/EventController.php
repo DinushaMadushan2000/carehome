@@ -1,6 +1,6 @@
 <?php
 
-class BlogController extends TableController
+class EventController extends TableController
 {
 
 
@@ -13,7 +13,7 @@ class BlogController extends TableController
     public function __construct(Database $database)
     {
         $this->conn = $database->getConnection();
-        $this->table = "blogs";
+        $this->table = "events";
 
         parent::__construct($database, $this->table);
     }

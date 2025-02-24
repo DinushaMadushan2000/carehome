@@ -11,7 +11,7 @@ $database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
 $auth = new AuthController($database);
 $user = new UserController($database);
 $admin = new AdminController($database);
-$blog = new BlogController($database);
+$event = new EventController($database);
 $testimonial = new TestimonialController($database);
 // $log = new LogController($database);
 $signals = new SignalController($database);
@@ -25,6 +25,7 @@ $about = new AboutController($database);
 $news = new NewsController($database);
 $faq = new FaqController($database);
 $gallery = new GalleryController($database);
+
 
 // Db controller 
 $db = new DbController($database);
